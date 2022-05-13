@@ -20,6 +20,7 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    position: relative;
 }
 
 .dice-section {
@@ -95,4 +96,22 @@ body {
     letter-spacing: -0.03em;
     color: #4A4E74;
     width: 250px;
+}
+
+.stats {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.rolls {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+}
+
+.pb-rolls {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import Dice from './Components/Dice'
 import { nanoid } from 'nanoid'
+import Confetti from 'react-confetti'
 
 export default function App() {
 
@@ -22,11 +23,38 @@ export default function App() {
     }
 
     const [ dice, setDice ] = React.useState(allNewDice())
+    const [ tenzies, setTenzies ] = React.useState(false)
+    const [rolls, setRolls] = React.useState(0)
+    const [ pbRolls, setPbRolls ] = React.useState(JSON.parse(localStorage.getItem('pbRolls')) || null)
+
+    React.useEffect(() => {
+        const allHeld = dice.every(die => die.isHeld)
+        const allSameValue = dice.every(die => die.value === dice[0].value)
+        if(allHeld && allSameValue) {
+            setTenzies(true)
+        }
+    }, [dice])
+
+    React.useEffect(() => {
+        if(!pbRolls || pbRolls < rolls) {
+            setPbRolls(rolls)
+            localStorage.setItem('pbRolls', rolls)
+        }
+    }, [tenzies])
 
     function rollDice() {
-        setDice(oldDice => oldDice.map(die => {
-            return die.isHeld ? die : generateNewDie()
-        }))
+        if(!tenzies)
+        {
+            setDice(oldDice => oldDice.map(die => {
+                return die.isHeld ? die : generateNewDie()
+            }))
+            setRolls(oldRolls => oldRolls + 1)
+        }
+        else {
+            setDice(allNewDice())
+            setTenzies(false)
+            setRolls(0)
+        }
     }
 
     function holdDice(diceId) {
@@ -42,12 +70,17 @@ export default function App() {
 
     return (
         <main className="main">
+            {tenzies && <Confetti width={400} height={420} />}
             <h3 className="title">Tenzies</h3>
+            <section className="stats">
+                <h4 className="rolls">Rolls: {rolls}</h4>
+                <h4 className="pb-rolls">{pbRolls ? `PB: ${pbRolls} Rolls` : `PB: N/A`}</h4>
+            </section>
             <div className="description">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</div>
             <div className="dice-section">
                 {newDiceElements}
             </div>
-            <button className="roll-dice" onClick={rollDice}>Roll Dice</button>
+            <button className="roll-dice" onClick={rollDice}>{tenzies ? "New Game" : "Roll Dice"}</button>
         </main>
     )
 };
