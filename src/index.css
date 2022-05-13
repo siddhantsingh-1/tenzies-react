@@ -1,13 +1,98 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+    background-color: #0B2434;
+}
+
+.main {
+    background: #F5F5F5;
+    width: 400px;
+    height: 420px;
+    border-radius: 12px;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.dice-section {
+    width: 280px;
+    height: 100px;
+    display: grid;
+    grid-template: repeat(2, 1fr) / repeat(5, 1fr);
+    grid-gap: 20px;
+}
+
+.dice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 3.81277px;
+    cursor: pointer;
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20.5889px;
+    line-height: 24px;
+    text-align: center;
+    color: #2B283A;
+}
+
+.roll-dice {
+    width: 110px;
+    height: 40px;
+    background: #5035FF;
+    box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
+    border-radius: 3.81277px;
+    color: white;
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16.384px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+.roll-dice:active {
+    background-color: #301f99
+}
+
+.title {
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.03em;
+    color: #2B283A;
+    margin-top: 25px;
+}
+
+.description {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13.1072px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.03em;
+    color: #4A4E74;
+    width: 250px;
 }
