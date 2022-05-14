@@ -104,14 +104,16 @@ body {
     right: 20px;
 }
 
-.rolls {
+.time {
     font-family: 'Karla';
     font-style: normal;
     font-weight: 700;
+    font-size: 0.9rem;
 }
 
-.pb-rolls {
+.pb-time {
     font-family: 'Karla';
     font-style: normal;
     font-weight: 700;
+    font-size: 0.9rem;
 }
